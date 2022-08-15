@@ -6,7 +6,8 @@ const main = () => {
   const quiz = new Quiz(questionsArray)
   const ui = new UI()
 
-  ui.showQuestion("Question injected!")
+  ui.showQuestion(quiz.getCurrentQuestion().text)
+  ui.showChoices(quiz.getCurrentQuestion().choices)
 }
 
 main()
