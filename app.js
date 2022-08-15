@@ -2,12 +2,20 @@ import {questionsArray} from "./questions.js"
 import { Quiz } from "./models/Quiz.js";
 import { UI } from "./models/UI.js";
 
+const renderPage = (quiz, ui) => {
+  ui.showQuestion(quiz.getCurrentQuestion().text)
+  ui.showChoices(quiz.getCurrentQuestion().choices, (currentChoice) => {
+    quiz.validateAndContinue(currentChoice)
+    renderPage(quiz, ui)
+  })
+}
+
 const main = () => {
   const quiz = new Quiz(questionsArray)
   const ui = new UI()
 
-  ui.showQuestion(quiz.getCurrentQuestion().text)
-  ui.showChoices(quiz.getCurrentQuestion().choices)
+  renderPage(quiz, ui)
+
 }
 
 main()

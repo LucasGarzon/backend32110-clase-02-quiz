@@ -15,7 +15,7 @@ export class Quiz {
     if (this.getCurrentQuestion().isCorrectAnswer(answer)) {
       this.score++
     }
-    this.quiestionIndex++
+    this.questionIndex++
   }
 
   isEnded() {
